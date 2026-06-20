@@ -467,6 +467,58 @@
   reveals.forEach(el => io.observe(el));
 </script>
 
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+  :root{
+    --chat--color-primary: #B9803F;
+    --chat--color-primary-shade-50: #a06f37;
+    --chat--color-secondary: #3F8C89;
+    --chat--color-white: #F1ECDE;
+    --chat--color-light: #F1ECDE;
+    --chat--color-dark: #1A2138;
+    --chat--color-typing: #1A2138;
+    --chat--spacing: 1rem;
+    --chat--border-radius: 6px;
+    --chat--toggle--background: #1A2138;
+    --chat--toggle--hover--background: #232b4a;
+    --chat--toggle--active--background: #1A2138;
+    --chat--toggle--size: 56px;
+    --chat--window--width: 380px;
+    --chat--window--height: 600px;
+    --chat--header--background: #1A2138;
+    --chat--header--color: #F1ECDE;
+    --chat--message--bot--background: #ffffff;
+    --chat--message--bot--color: #22262E;
+    --chat--message--user--background: #B9803F;
+    --chat--message--user--color: #1A2138;
+    --chat--input--border-active: #3F8C89;
+    --chat--font-family: 'Inter', sans-serif;
+  }
+</style>
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  createChat({
+    webhookUrl: 'https://n8n.srv1032672.hstgr.cloud/webhook/20bbf9ba-1498-4060-9865-1b6b16dd6ff8/chat',
+    mode: 'window',
+    showWelcomeScreen: true,
+    loadPreviousSession: true,
+    initialMessages: [
+      "Hi, I'm here to help with questions about Agility Technologies.",
+      "Ask about our services, or tell me what you're working on and I'll get you connected with the team."
+    ],
+    i18n: {
+      en: {
+        title: 'Agility Technologies',
+        subtitle: 'Typically replies within one business day.',
+        footer: '',
+        getStarted: 'New conversation',
+        inputPlaceholder: 'Type your question...',
+        closeButtonTooltip: 'Close chat',
+      },
+    },
+  });
+</script>
+
 </body>
 </html>
-<!-- deploy trigger -->
