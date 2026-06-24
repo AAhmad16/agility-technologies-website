@@ -370,6 +370,30 @@
     background-size:480px 480px;background-repeat:repeat;opacity:.45;
   }
   .ink-texture .wrap,.ink-texture .contact-inner{position:relative;z-index:2;}
+
+  /* MOVING FILMSTRIP: IT consulting scenes scrolling behind Consulting section */
+  .filmstrip-host{position:relative;overflow:hidden;}
+  .filmstrip-host .wrap{position:relative;z-index:2;}
+  .filmstrip{
+    position:absolute;inset:0;z-index:0;display:flex;align-items:center;
+    opacity:.16;color:var(--ink-soft);pointer-events:none;
+  }
+  .filmstrip-track{display:flex;gap:26px;animation:filmstrip-scroll 42s linear infinite;will-change:transform;}
+  .frame{
+    flex:0 0 auto;width:200px;height:128px;position:relative;
+    border:1.5px solid currentColor;border-radius:6px;padding:14px;box-sizing:border-box;
+  }
+  .frame::before,.frame::after{
+    content:'';position:absolute;left:14px;right:14px;height:1px;
+    background-image:repeating-linear-gradient(90deg,currentColor 0 6px,transparent 6px 14px);
+  }
+  .frame::before{top:5px;}
+  .frame::after{bottom:5px;}
+  .frame svg{width:100%;height:100%;}
+  @keyframes filmstrip-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @media (prefers-reduced-motion: reduce){
+    .filmstrip-track{animation:none;}
+  }
 </style>
 </head>
 <body>
@@ -507,7 +531,23 @@
   </div>
 </section>
 
-<section class="consulting" id="consulting">
+<section class="consulting filmstrip-host" id="consulting">
+  <div class="filmstrip" aria-hidden="true">
+    <div class="filmstrip-track">
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="60" y="70" width="100" height="14" rx="3"/><circle cx="50" cy="60" r="9"/><path d="M50 69v14M42 78h16"/><circle cx="110" cy="50" r="9"/><path d="M110 59v14M102 68h16"/><circle cx="170" cy="60" r="9"/><path d="M170 69v14M162 78h16"/><rect x="170" y="20" width="34" height="22" rx="2"/><rect x="176" y="26" width="6" height="6"/><rect x="186" y="26" width="6" height="6"/><rect x="196" y="26" width="6" height="6"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="20" width="56" height="100" rx="3"/><rect x="80" y="20" width="56" height="70" rx="3"/><rect x="146" y="20" width="56" height="45" rx="3"/><rect x="20" y="30" width="44" height="14" rx="2"/><rect x="20" y="50" width="44" height="14" rx="2"/><rect x="86" y="30" width="44" height="14" rx="2"/><rect x="152" y="30" width="44" height="14" rx="2"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="30" width="40" height="80" rx="3"/><path d="M28 45h24M28 60h24M28 75h24M28 90h24"/><path d="M64 70h30"/><circle cx="104" cy="70" r="6"/><path d="M110 70h26M136 70l-10-14M136 70l-10 14"/><circle cx="146" cy="56" r="5"/><circle cx="146" cy="84" r="5"/><path d="M151 56h20v28h-20"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="24" width="180" height="100" rx="4"/><path d="M40 95l25-30 20 16 30-38 25 22 30-16"/><rect x="40" y="40" width="40" height="26" rx="2"/><path d="M48 50h24M48 58h16"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="60" r="10"/><path d="M40 70v18M30 82h20"/><circle cx="180" cy="60" r="10"/><path d="M180 70v18M170 82h20"/><path d="M55 64h40M150 64h-40"/><rect x="95" y="56" width="30" height="16" rx="3"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="20" width="120" height="80" rx="3"/><path d="M34 70l20-22 18 14 26-30M34 90h90"/><circle cx="170" cy="70" r="9"/><path d="M170 79v18M161 97h18"/><path d="M150 70h10"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="60" y="70" width="100" height="14" rx="3"/><circle cx="50" cy="60" r="9"/><path d="M50 69v14M42 78h16"/><circle cx="110" cy="50" r="9"/><path d="M110 59v14M102 68h16"/><circle cx="170" cy="60" r="9"/><path d="M170 69v14M162 78h16"/><rect x="170" y="20" width="34" height="22" rx="2"/><rect x="176" y="26" width="6" height="6"/><rect x="186" y="26" width="6" height="6"/><rect x="196" y="26" width="6" height="6"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="20" width="56" height="100" rx="3"/><rect x="80" y="20" width="56" height="70" rx="3"/><rect x="146" y="20" width="56" height="45" rx="3"/><rect x="20" y="30" width="44" height="14" rx="2"/><rect x="20" y="50" width="44" height="14" rx="2"/><rect x="86" y="30" width="44" height="14" rx="2"/><rect x="152" y="30" width="44" height="14" rx="2"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="30" width="40" height="80" rx="3"/><path d="M28 45h24M28 60h24M28 75h24M28 90h24"/><path d="M64 70h30"/><circle cx="104" cy="70" r="6"/><path d="M110 70h26M136 70l-10-14M136 70l-10 14"/><circle cx="146" cy="56" r="5"/><circle cx="146" cy="84" r="5"/><path d="M151 56h20v28h-20"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="24" width="180" height="100" rx="4"/><path d="M40 95l25-30 20 16 30-38 25 22 30-16"/><rect x="40" y="40" width="40" height="26" rx="2"/><path d="M48 50h24M48 58h16"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="60" r="10"/><path d="M40 70v18M30 82h20"/><circle cx="180" cy="60" r="10"/><path d="M180 70v18M170 82h20"/><path d="M55 64h40M150 64h-40"/><rect x="95" y="56" width="30" height="16" rx="3"/></svg></div>
+      <div class="frame"><svg viewBox="0 0 220 140" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="20" width="120" height="80" rx="3"/><path d="M34 70l20-22 18 14 26-30M34 90h90"/><circle cx="170" cy="70" r="9"/><path d="M170 79v18M161 97h18"/><path d="M150 70h10"/></svg></div>
+    </div>
+  </div>
   <div class="wrap">
     <div class="section-head" data-reveal>
       <p class="eyebrow mono">Consulting Services</p>
